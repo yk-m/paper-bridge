@@ -1,0 +1,33 @@
+name: PaperBridge
+options:
+  bundleIdPrefix: com.yuka
+targets:
+  PaperBridge:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [PaperBridge]
+    settings:
+      SWIFT_VERSION: 5.2.4
+      INFOPLIST_FILE: PaperBridge/Application/Info.plist
+    prebuildScripts:
+      - name: Run SwiftLint
+        script: |
+                if mint which swiftlint >/dev/null; then
+                mint run swiftlint autocorrect --format
+                mint run swiftlint
+                else
+                echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                fi
+  PaperBridgeTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: PaperBridgeTests
+    dependencies:
+      - target: PaperBridge
+  PaperBridgeUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: PaperBridgeUITests
+    dependencies:
+      - target: PaperBridge
