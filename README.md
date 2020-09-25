@@ -1,9 +1,9 @@
 # PaperBridge
 
-# Requirements
+## Requirements
 - [Mint](https://github.com/yonaskolb/Mint)
 
-# Installation
+## Installation
 
 ```
 make install
