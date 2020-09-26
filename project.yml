@@ -5,11 +5,15 @@ targets:
   PaperBridge:
     type: application
     platform: iOS
-    deploymentTarget: "13.0"
+    deploymentTarget:
+      iOS: 14.0
     sources: [PaperBridge]
     settings:
-      SWIFT_VERSION: 5.2.4
+      CODE_SIGN_IDENTITY: iPhone Developer
+      DEVELOPMENT_TEAM: 8J78YW46G6
       INFOPLIST_FILE: PaperBridge/Application/Info.plist
+      SUPPORTS_MACCATALYST: true
+      SWIFT_VERSION: 5.3
     prebuildScripts:
       - name: Run SwiftLint
         script: |
